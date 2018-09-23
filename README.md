@@ -2,7 +2,7 @@
 
 <img src="https://cdn-shop.adafruit.com/970x728/3964-00.jpg" height="300"/>
 
-This is a library for the Adafruit VEML6070 UV sensor breakout:
+This is a library for the Adafruit VEML6075 UV sensor breakout:
   * https://www.adafruit.com/products/3964
  
 Check out the links above for our tutorials and wiring diagrams. This chip uses I2C to communicate

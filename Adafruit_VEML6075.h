@@ -75,7 +75,7 @@ typedef union {
 
 /**************************************************************************/
 /*! 
-    @brief  Class that stores state and functions for interacting with VEML6070 sensor IC
+    @brief  Class that stores state and functions for interacting with VEML6075 sensor IC
 */
 /**************************************************************************/
 class Adafruit_VEML6075 {

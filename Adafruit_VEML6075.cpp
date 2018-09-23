@@ -53,8 +53,11 @@ Adafruit_VEML6075::Adafruit_VEML6075() {
 /**************************************************************************/
 /*! 
     @brief  setup and initialize communication with the hardware
-    @param itime the integration time to use for the data
+    @param itime The integration time to use for the data. Defaults to 100ms
+    @param forcedReads True for triggered read, false for continuous (default)
+    @param highDynamic Whether to read in normal or high dynamic mode - defaults to normal
     @param twoWire Optional pointer to the desired TwoWire I2C object. Defaults to &Wire
+    @returns True if sensor found, false if sensor not detected
 */
 /**************************************************************************/
 boolean Adafruit_VEML6075::begin(veml6075_integrationtime_t itime, bool highDynamic,
@@ -171,7 +174,7 @@ void Adafruit_VEML6075::setHighDynamic(bool hd) {
 /**************************************************************************/
 /*! 
     @brief Gets whether to take readings in 'high dynamic' mode
-    @reutnrs True if set to high dynamic readings, False for normal dynamic
+    @returns True if set to high dynamic readings, False for normal dynamic
 */
 /**************************************************************************/
 bool Adafruit_VEML6075::getHighDynamic(void) {
@@ -186,7 +189,7 @@ bool Adafruit_VEML6075::getHighDynamic(void) {
 /**************************************************************************/
 /*! 
     @brief Sets whether to take readings on request
-    @returns True if you want readings on request, False for continuous reads
+    @param flag True if you want readings on request, False for continuous reads
 */
 /**************************************************************************/
 void Adafruit_VEML6075::setForcedMode(bool flag) {

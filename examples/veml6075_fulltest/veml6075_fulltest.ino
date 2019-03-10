@@ -46,7 +46,7 @@ void setup() {
   Serial.println("ms");
 
   // Set the high dynamic mode
-  uv.setHighDynamic(false);
+  uv.setHighDynamic(true);
   // Get the mode
   if (uv.getHighDynamic()) {
     Serial.println("High dynamic reading mode");

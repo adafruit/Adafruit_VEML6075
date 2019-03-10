@@ -61,14 +61,24 @@ Adafruit_VEML6075::Adafruit_VEML6075() {
 */
 /**************************************************************************/
 boolean Adafruit_VEML6075::begin(veml6075_integrationtime_t itime, bool highDynamic,
-				 bool forcedReads, TwoWire *twoWire) {
-  _i2c = twoWire;
+				 bool forcedReads, TwoWire *theWire) {
+  i2c_dev = new Adafruit_I2CDevice(VEML6075_ADDR, theWire);
 
-  uint8_t id = readRegister(VEML6075_REG_ID);
+  if (!i2c_dev->begin()) {
+    return false;
+  }
+
+  Adafruit_I2CRegister ID_Register = Adafruit_I2CRegister(i2c_dev, VEML6075_REG_ID, 2);
+  uint16_t id;
+
+  if (! ID_Register.read(&id) ) {
+    return false;
+  }
   if (id != 0x26) {
     return false;
   }
 
+  Config_Register = new Adafruit_I2CRegister(i2c_dev, VEML6075_REG_CONF, 2);
   // Start from scratch
   _commandRegister.reg = 0;
 
@@ -119,7 +129,7 @@ void Adafruit_VEML6075::setCoefficients(float UVA_A, float UVA_B, float UVB_C, f
 /**************************************************************************/
 void Adafruit_VEML6075::shutdown(bool sd) {
   _commandRegister.bit.SD = sd;
-  writeRegister(VEML6075_REG_CONF, _commandRegister.reg);
+  Config_Register->write(_commandRegister.reg);
 }
 
 
@@ -130,10 +140,9 @@ void Adafruit_VEML6075::shutdown(bool sd) {
 */
 /**************************************************************************/
 void Adafruit_VEML6075::setIntegrationTime(veml6075_integrationtime_t itime) {
-
   // Set integration time
   _commandRegister.bit.UV_IT = (uint8_t)itime;
-  writeRegister(VEML6075_REG_CONF, _commandRegister.reg);
+  Config_Register->write(_commandRegister.reg);
 
   _read_delay = 0;
   switch (itime) {
@@ -153,7 +162,7 @@ void Adafruit_VEML6075::setIntegrationTime(veml6075_integrationtime_t itime) {
 /**************************************************************************/
 veml6075_integrationtime_t Adafruit_VEML6075::getIntegrationTime(void) {
   // Get register
-  _commandRegister.reg = readRegister(VEML6075_REG_CONF);
+  Config_Register->read(&_commandRegister.reg);
 
   // extract and return just the integration time
   return (veml6075_integrationtime_t)_commandRegister.bit.UV_IT;
@@ -168,7 +177,7 @@ veml6075_integrationtime_t Adafruit_VEML6075::getIntegrationTime(void) {
 void Adafruit_VEML6075::setHighDynamic(bool hd) {
   // Set HD mode
   _commandRegister.bit.UV_HD = hd;
-  writeRegister(VEML6075_REG_CONF, _commandRegister.reg);
+  Config_Register->write(_commandRegister.reg);
 }
 
 /**************************************************************************/
@@ -179,7 +188,7 @@ void Adafruit_VEML6075::setHighDynamic(bool hd) {
 /**************************************************************************/
 bool Adafruit_VEML6075::getHighDynamic(void) {
   // Get register
-  _commandRegister.reg = readRegister(VEML6075_REG_CONF);
+  Config_Register->read(&_commandRegister.reg);
 
   // extract and return just the HD setting
   return _commandRegister.bit.UV_HD;
@@ -195,7 +204,7 @@ bool Adafruit_VEML6075::getHighDynamic(void) {
 void Adafruit_VEML6075::setForcedMode(bool flag) {
   // Set forced mode
   _commandRegister.bit.UV_AF = flag;
-  writeRegister(VEML6075_REG_CONF, _commandRegister.reg);
+  Config_Register->write(_commandRegister.reg);
 }
 
 /**************************************************************************/
@@ -206,7 +215,7 @@ void Adafruit_VEML6075::setForcedMode(bool flag) {
 /**************************************************************************/
 bool Adafruit_VEML6075::getForcedMode(void) {
   // Get register
-  _commandRegister.reg = readRegister(VEML6075_REG_CONF);
+  Config_Register->read(&_commandRegister.reg);
 
   // extract and return just the AF setting
   return _commandRegister.bit.UV_AF;
@@ -223,7 +232,7 @@ void Adafruit_VEML6075::takeReading(void) {
   if (getForcedMode()) {
     // trigger one reading
     _commandRegister.bit.UV_TRIG = 1;
-    writeRegister(VEML6075_REG_CONF, _commandRegister.reg);
+    Config_Register->write(_commandRegister.reg);
 
     // Wait until we're done, add 10% just to be sure
     delay(_read_delay * 1.1);
@@ -231,10 +240,14 @@ void Adafruit_VEML6075::takeReading(void) {
   }
   // otherwise, just take the reading immediately
 
-  float uva = readRegister(VEML6075_REG_UVA);
-  float uvb = readRegister(VEML6075_REG_UVB);
-  float uvcomp1 = readRegister(VEML6075_REG_UVCOMP1);
-  float uvcomp2 = readRegister(VEML6075_REG_UVCOMP2);
+  Adafruit_I2CRegister UVA_Register = Adafruit_I2CRegister(i2c_dev, VEML6075_REG_UVA, 2);
+  Adafruit_I2CRegister UVB_Register = Adafruit_I2CRegister(i2c_dev, VEML6075_REG_UVB, 2);
+  Adafruit_I2CRegister UVCOMP1_Register = Adafruit_I2CRegister(i2c_dev, VEML6075_REG_UVCOMP1, 2);
+  Adafruit_I2CRegister UVCOMP2_Register = Adafruit_I2CRegister(i2c_dev, VEML6075_REG_UVCOMP2, 2);
+  float uva = UVA_Register.read();
+  float uvb = UVB_Register.read();
+  float uvcomp1 = UVCOMP1_Register.read();
+  float uvcomp2 = UVCOMP2_Register.read();
 
   /*
   Serial.print("UVA: "); Serial.print(uva);
@@ -279,38 +292,4 @@ float Adafruit_VEML6075::readUVB(void) {
 float Adafruit_VEML6075::readUVI() {
   takeReading();
   return ((_uva_calc * _uva_resp) + (_uvb_calc * _uvb_resp)) / 2;
-}
-
-
-/**************************************************************************/
-/*! 
-    @brief Write two bytes to a register location
-*/
-/**************************************************************************/
-void Adafruit_VEML6075::writeRegister(uint8_t reg, uint16_t data) {
-  _i2c->begin();
-  _i2c->beginTransmission(VEML6075_ADDR);
-  _i2c->write(reg);
-  _i2c->write(data & 0xFF);
-  _i2c->write(data >> 8);
-  _i2c->endTransmission();
-}
-
-/**************************************************************************/
-/*! 
-    @brief Read two bytes from a register location
-*/
-/**************************************************************************/
-uint16_t Adafruit_VEML6075::readRegister(uint8_t reg) {
-  _i2c->begin();
-  _i2c->beginTransmission(VEML6075_ADDR);
-  _i2c->write(reg);
-  _i2c->endTransmission(false); // repeated start
-
-  while (_i2c->requestFrom(VEML6075_ADDR, 2) != 2) {
-    delay(10);
-  }
-  uint16_t data = _i2c->read();
-  data |= ((uint16_t) _i2c->read()) << 8;
-  return data;
 }

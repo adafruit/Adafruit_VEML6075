@@ -17,12 +17,10 @@
  *
  */
 
-#if (ARDUINO >= 100)
- #include "Arduino.h"
-#else
- #include "WProgram.h"
-#endif
-#include "Wire.h"
+#include "Arduino.h"
+#include <Wire.h>
+#include <Adafruit_I2CDevice.h>
+#include <Adafruit_I2CRegister.h>
 
 #define VEML6075_ADDR         (0x10) ///< I2C address (cannot be changed)
 #define VEML6075_REG_CONF     (0x00) ///< Configuration register
@@ -63,10 +61,9 @@ typedef union {
   struct {
     uint8_t SD:1;              ///< Shut Down
     uint8_t UV_AF:1;           ///< Auto or forced
-    uint8_t UV_TRIG:2;         ///< Trigger forced mode
+    uint8_t UV_TRIG:1;         ///< Trigger forced mode
     uint8_t UV_HD:1;           ///< High dynamic
-    uint8_t UV_IT:2;           ///< Integration Time
-    uint8_t reserved:1;        ///< unused
+    uint8_t UV_IT:3;           ///< Integration Time
     uint8_t high_byte;         ///< unused
   } bit;                       ///< Bitfield of 16 bits
   uint16_t reg;                ///< The raw 16 bit register data
@@ -100,14 +97,13 @@ class Adafruit_VEML6075 {
 
   float readUVA(void);
   float readUVB(void);
-
   float readUVI(void);
+
+  Adafruit_I2CRegister *Config_Register;
+  
 
  private:
   void takeReading(void);
-
-  void     writeRegister(uint8_t reg, uint16_t data);
-  uint16_t readRegister(uint8_t reg);
 
   uint16_t _read_delay;
 
@@ -116,5 +112,6 @@ class Adafruit_VEML6075 {
   float _uva_calc, _uvb_calc;
 
   veml6075_commandRegister _commandRegister;
-  TwoWire *_i2c;
+
+  Adafruit_I2CDevice *i2c_dev;
 };

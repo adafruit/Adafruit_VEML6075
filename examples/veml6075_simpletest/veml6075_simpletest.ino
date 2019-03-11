@@ -26,7 +26,9 @@ Adafruit_VEML6075 uv = Adafruit_VEML6075();
 
 void setup() {
   Serial.begin(115200);
+  while (!Serial) { delay(10); }
   Serial.println("VEML6075 Simple Test");
+
   if (! uv.begin()) {
     Serial.println("Failed to communicate with VEML6075 sensor, check wiring?");
     while (1) { delay(100); }

@@ -1,4 +1,4 @@
-# Adafruit_VEML6075 [![Build Status](https://travis-ci.org/adafruit/Adafruit_VEML6075.svg?branch=master)](https://travis-ci.org/adafruit/Adafruit_VEML6075)
+# Adafruit_VEML6075 [![Build Status](https://travis-ci.com/adafruit/Adafruit_VEML6075.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_VEML6075)
 
 <img src="https://cdn-shop.adafruit.com/970x728/3964-00.jpg" height="300"/>
 

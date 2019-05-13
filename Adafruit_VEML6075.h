@@ -81,7 +81,7 @@ class Adafruit_VEML6075 {
 
   boolean begin(veml6075_integrationtime_t itime = VEML6075_100MS, 
 		bool highDynamic = false, bool forcedReads = false,
-		TwoWire *twoWire = &Wire);
+		TwoWire *theWire = &Wire);
 
   void shutdown(bool sd);
 
@@ -99,7 +99,7 @@ class Adafruit_VEML6075 {
   float readUVB(void);
   float readUVI(void);
 
-  Adafruit_I2CRegister *Config_Register;
+  Adafruit_I2CRegister *Config_Register;  ///< Chip config register
   
 
  private:

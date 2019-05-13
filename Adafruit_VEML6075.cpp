@@ -56,7 +56,7 @@ Adafruit_VEML6075::Adafruit_VEML6075() {
     @param itime The integration time to use for the data. Defaults to 100ms
     @param forcedReads True for triggered read, false for continuous (default)
     @param highDynamic Whether to read in normal or high dynamic mode - defaults to normal
-    @param twoWire Optional pointer to the desired TwoWire I2C object. Defaults to &Wire
+    @param theWire Optional pointer to the desired TwoWire I2C object. Defaults to &Wire
     @returns True if sensor found, false if sensor not detected
 */
 /**************************************************************************/

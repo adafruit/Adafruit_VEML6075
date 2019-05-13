@@ -60,6 +60,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_adafruit___v_e_m_l6075-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Adafruit_VEML6075 Class Reference</div>  </div>
@@ -77,9 +78,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___v_e_m_l6075.html#a248c40b69519552001ef11f6dbc448e6">Adafruit_VEML6075</a> ()</td></tr>
 <tr class="memdesc:a248c40b69519552001ef11f6dbc448e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor initializes default configuration value <br /></td></tr>
 <tr class="separator:a248c40b69519552001ef11f6dbc448e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5daed119c7182dfee697c052f40046b9"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___v_e_m_l6075.html#a5daed119c7182dfee697c052f40046b9">begin</a> (<a class="el" href="_adafruit___v_e_m_l6075_8h.html#ac23413803c46a45386a822b78f0e500d">veml6075_integrationtime_t</a> itime=VEML6075_100MS, bool highDynamic=false, bool forcedReads=false, TwoWire *twoWire=&amp;Wire)</td></tr>
-<tr class="memdesc:a5daed119c7182dfee697c052f40046b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup and initialize communication with the hardware  <a href="#a5daed119c7182dfee697c052f40046b9">More...</a><br /></td></tr>
-<tr class="separator:a5daed119c7182dfee697c052f40046b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4dd63dec042539be379da1b8e9f4044"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___v_e_m_l6075.html#aa4dd63dec042539be379da1b8e9f4044">begin</a> (<a class="el" href="_adafruit___v_e_m_l6075_8h.html#ac23413803c46a45386a822b78f0e500d">veml6075_integrationtime_t</a> itime=VEML6075_100MS, bool highDynamic=false, bool forcedReads=false, TwoWire *theWire=&amp;Wire)</td></tr>
+<tr class="memdesc:aa4dd63dec042539be379da1b8e9f4044"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup and initialize communication with the hardware  <a href="#aa4dd63dec042539be379da1b8e9f4044">More...</a><br /></td></tr>
+<tr class="separator:aa4dd63dec042539be379da1b8e9f4044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc776519a3ba48c8f823663ef5796c37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___v_e_m_l6075.html#afc776519a3ba48c8f823663ef5796c37">shutdown</a> (bool sd)</td></tr>
 <tr class="memdesc:afc776519a3ba48c8f823663ef5796c37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shut down the sensor.  <a href="#afc776519a3ba48c8f823663ef5796c37">More...</a><br /></td></tr>
 <tr class="separator:afc776519a3ba48c8f823663ef5796c37"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,12 +114,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a88e38a34fe6a7df3e3dbdc5b41a22640"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___v_e_m_l6075.html#a88e38a34fe6a7df3e3dbdc5b41a22640">readUVI</a> (void)</td></tr>
 <tr class="memdesc:a88e38a34fe6a7df3e3dbdc5b41a22640"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read and calculate the approximate UV Index reading.  <a href="#a88e38a34fe6a7df3e3dbdc5b41a22640">More...</a><br /></td></tr>
 <tr class="separator:a88e38a34fe6a7df3e3dbdc5b41a22640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a59b75c0cef117be368e7878fe98c6869"><td class="memItemLeft" align="right" valign="top"><a id="a59b75c0cef117be368e7878fe98c6869"></a>
+Adafruit_I2CRegister *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___v_e_m_l6075.html#a59b75c0cef117be368e7878fe98c6869">Config_Register</a></td></tr>
+<tr class="memdesc:a59b75c0cef117be368e7878fe98c6869"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chip config register. <br /></td></tr>
+<tr class="separator:a59b75c0cef117be368e7878fe98c6869"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that stores state and functions for interacting with VEML6075 sensor IC. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5daed119c7182dfee697c052f40046b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5daed119c7182dfee697c052f40046b9">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="aa4dd63dec042539be379da1b8e9f4044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4dd63dec042539be379da1b8e9f4044">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,7 +153,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">TwoWire *&#160;</td>
-          <td class="paramname"><em>twoWire</em> = <code>&amp;Wire</code>&#160;</td>
+          <td class="paramname"><em>theWire</em> = <code>&amp;Wire</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -161,7 +169,7 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">itime</td><td>The integration time to use for the data. Defaults to 100ms </td></tr>
     <tr><td class="paramname">forcedReads</td><td>True for triggered read, false for continuous (default) </td></tr>
     <tr><td class="paramname">highDynamic</td><td>Whether to read in normal or high dynamic mode - defaults to normal </td></tr>
-    <tr><td class="paramname">twoWire</td><td>Optional pointer to the desired TwoWire I2C object. Defaults to &amp;Wire </td></tr>
+    <tr><td class="paramname">theWire</td><td>Optional pointer to the desired TwoWire I2C object. Defaults to &amp;Wire </td></tr>
   </table>
   </dd>
 </dl>

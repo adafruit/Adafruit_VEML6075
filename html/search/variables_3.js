@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sd',['SD',['../unionveml6075__command_register.html#af9eb5cb1e5d44879350d6e1024411910',1,'veml6075_commandRegister']]]
+  ['reg',['reg',['../unionveml6075__command_register.html#a6b4225b643bf4651bc6ae59b3e90957e',1,'veml6075_commandRegister']]]
 ];

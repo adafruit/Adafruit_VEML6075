@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['high_5fbyte',['high_byte',['../unionveml6075__command_register.html#a8db33a0e717080423189aaa19e213bd6',1,'veml6075_commandRegister']]]
+  ['getforcedmode',['getForcedMode',['../class_adafruit___v_e_m_l6075.html#a0f7c30aae59412f0fc60f54220ad9a80',1,'Adafruit_VEML6075']]],
+  ['gethighdynamic',['getHighDynamic',['../class_adafruit___v_e_m_l6075.html#a140c710b5470bc938a4b46a62a729efd',1,'Adafruit_VEML6075']]],
+  ['getintegrationtime',['getIntegrationTime',['../class_adafruit___v_e_m_l6075.html#a5fdc5c1ec2cd7fef446e70d54e2d46af',1,'Adafruit_VEML6075']]]
 ];

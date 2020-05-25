@@ -1,5 +1,4 @@
-# Adafruit_VEML6075 [![Build Status](https://travis-ci.com/adafruit/Adafruit_VEML6075.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_VEML6075)
-
+# Adafruit_VEML6075 [![Build Status](https://github.com/adafruit/Adafruit_VEML6075/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_VEML6075/actions)[![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit_VEML6075/html/index.html)
 <img src="https://cdn-shop.adafruit.com/970x728/3964-00.jpg" height="300"/>
 
 This is a library for the Adafruit VEML6075 UV sensor breakout:

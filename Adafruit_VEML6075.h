@@ -97,6 +97,7 @@ public:
   float readUVA(void);
   float readUVB(void);
   float readUVI(void);
+  void readUVABI(float *a, float *b, float *i);
 
   Adafruit_I2CRegister *Config_Register; ///< Chip config register
 

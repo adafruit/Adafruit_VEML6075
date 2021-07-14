@@ -114,6 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a88e38a34fe6a7df3e3dbdc5b41a22640"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___v_e_m_l6075.html#a88e38a34fe6a7df3e3dbdc5b41a22640">readUVI</a> (void)</td></tr>
 <tr class="memdesc:a88e38a34fe6a7df3e3dbdc5b41a22640"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read and calculate the approximate UV Index reading.  <a href="#a88e38a34fe6a7df3e3dbdc5b41a22640">More...</a><br /></td></tr>
 <tr class="separator:a88e38a34fe6a7df3e3dbdc5b41a22640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d70587d67c88abcdcfd1f44b45416df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___v_e_m_l6075.html#a9d70587d67c88abcdcfd1f44b45416df">readUVABI</a> (float *a, float *b, float *i)</td></tr>
+<tr class="memdesc:a9d70587d67c88abcdcfd1f44b45416df"><td class="mdescLeft">&#160;</td><td class="mdescRight">read the calibrated UVA &amp; UVB band reading and calculate the approximate UV Index reading  <a href="#a9d70587d67c88abcdcfd1f44b45416df">More...</a><br /></td></tr>
+<tr class="separator:a9d70587d67c88abcdcfd1f44b45416df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -426,7 +429,7 @@ Adafruit_I2CRegister *&#160;</td><td class="memItemRight" valign="bottom"><a cla
 </div><div class="memdoc">
 
 <p>read the calibrated UVA band reading </p>
-<dl class="section return"><dt>Returns</dt><dd>the UVA reading in unitless counts </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the UVA reading in unitless counts or NAN if reading failed </dd></dl>
 
 </div>
 </div>
@@ -447,7 +450,7 @@ Adafruit_I2CRegister *&#160;</td><td class="memItemRight" valign="bottom"><a cla
 </div><div class="memdoc">
 
 <p>read the calibrated UVB band reading </p>
-<dl class="section return"><dt>Returns</dt><dd>the UVB reading in unitless counts </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the UVB reading in unitless counts or NAN if reading failed </dd></dl>
 
 </div>
 </div>
@@ -468,7 +471,51 @@ Adafruit_I2CRegister *&#160;</td><td class="memItemRight" valign="bottom"><a cla
 </div><div class="memdoc">
 
 <p>Read and calculate the approximate UV Index reading. </p>
-<dl class="section return"><dt>Returns</dt><dd>the UV Index as a floating point </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the UV Index as a floating point or NAN if reading failed </dd></dl>
+
+</div>
+</div>
+<a id="a9d70587d67c88abcdcfd1f44b45416df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d70587d67c88abcdcfd1f44b45416df">&#9670;&nbsp;</a></span>readUVABI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Adafruit_VEML6075::readUVABI </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>read the calibrated UVA &amp; UVB band reading and calculate the approximate UV Index reading </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>pointer to store UVA reading or NAN if reading failed </td></tr>
+    <tr><td class="paramname">b</td><td>pointer to store UVB reading or NAN if reading failed </td></tr>
+    <tr><td class="paramname">i</td><td>pointer to store UVI reading or NAN if reading failed </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

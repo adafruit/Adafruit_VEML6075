@@ -316,3 +316,19 @@ float Adafruit_VEML6075::readUVI() {
   takeReading();
   return ((_uva_calc * _uva_resp) + (_uvb_calc * _uvb_resp)) / 2;
 }
+
+/**************************************************************************/
+/*!
+    @brief  read the calibrated UVA & UVB band reading and calculate the
+   approximate UV Index reading
+        @param a pointer to store UVA reading or NAN if reading failed
+        @param b pointer to store UVB reading or NAN if reading failed
+        @param i pointer to store UVI reading or NAN if reading failed
+*/
+/**************************************************************************/
+void Adafruit_VEML6075::readUVABI(float *a, float *b, float *i) {
+  takeReading();
+  *a = _uva_calc;
+  *b = _uvb_calc;
+  *i = ((_uva_calc * _uva_resp) + (_uvb_calc * _uvb_resp)) / 2;
+}
